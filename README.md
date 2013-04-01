@@ -21,7 +21,8 @@ ADVANCED_OPTIMIZATIONS.
 
 ## Examples
 
-Check out example.html for a number, but here are the basics:
+Check out example.html for a number, but here are the basics.  The objects
+after the function calls are the return values.
 
 ```js
 // Parse Document URL
