@@ -100,7 +100,7 @@ self["get"] = function (q, opt) {
 
 		k = decodeURIComponent(k);
 
-		typeof o[k] == "undefined" || console.log("Property "+k+"already exists!");
+		typeof o[k] == "undefined" || console.log("Property "+k+" already exists!");
 		o[k] = v;
 	}
 
@@ -116,7 +116,8 @@ var pass  = /^:([^@]*)@/;
 var host  = /^[A-Za-z-._]+/;
 var port  = /^:([0-9]*)/;
 var path  = /^\/[^?]*/;
-var query = /^\?(.*)/;
+var query = /^\?([^#]*)/;
+var hash  = /^#(.*)$/;
 
 /// Parse a URL
 /**
@@ -135,9 +136,11 @@ var query = /^\?(.*)/;
  *  - user: The username.
  *  - pass: The password.
  *  - host: The hostname. (ex: "localhost", "123.456.7.8" or "example.com")
+ *  - port: The port, as a number. (ex: 1337)
  *  - path: The path. (ex: "/" or "/about.html")
  *  - query: "The query string. (ex: "foo=bar&v=17&format=json")
  *  - get: The query string parsed with get.  If `opt.get` is `false` this will
+ *  - hash: The value after the hash. (ex: "myanchor")
  * 	be undefined even if `query` is set.
  *
  * @param{string} url The URL to parse.
@@ -152,7 +155,8 @@ var query = /^\?(.*)/;
  * 	port: number,
  * 	path: string,
  * 	query: string,
- * 	get: Object
+ * 	get: Object,
+ * 	hash: string
  * }}
  */
 self["parse"] = function(url, opt)
@@ -221,6 +225,14 @@ self["parse"] = function(url, opt)
 			r["get"] = self["get"](r["query"], opt["get"]);
 
 		url = url.slice(q[0].length);
+	} while (false);
+
+	do {
+		var h = url.match(hash)
+		if ( h === null ) break;
+		r["hash"] = decodeURIComponent(h[1]);
+
+		//url = url.slice(h[0].length);
 	} while (false);
 
 	return r;

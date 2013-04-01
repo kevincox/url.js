@@ -32,8 +32,8 @@ url.parse(document.location.href);
 	"path": "/home/kevin/url.js/example.html"
 }
 
-// Parse ftp://my.host.com/a/file?ftp=query%3F
-url.parse("ftp://my.host.com/a/file?ftp=query%3F");
+// Parse ftp://my.host.com/a/file?ftp=query%3F#anchor
+url.parse("ftp://my.host.com/a/file?ftp=query%3F#anchor");
 {
 	"scheme": "ftp",
 	"host": "my.host.com",
@@ -42,7 +42,8 @@ url.parse("ftp://my.host.com/a/file?ftp=query%3F");
 	"query": "ftp=query%3F",
 	"get": {
 		"ftp": "query?" // Encoded values are properly handled.
-	}
+	},
+    "hash": "anchor"
 }
 
 // Parse email mailto:kevincox.ca@gmail.com
