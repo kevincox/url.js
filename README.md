@@ -72,4 +72,17 @@ url.get("foo=bar&flag&a[0]=zero&a[2]=two&na[1][0]=nested&na[1][foo]=stillnested"
 	a: [ 'zero', , 'two' ],
 	na: [ , [ 'nested', foo: 'stillnested' ] ]
 }
+
+// A clean example without missing values.
+url.get("val[0]=zero&val[1]=one&val[2]&val[3]=&val[4]=four&val[5][0]=n1&val[5][1]=n2&val[5][2]=n3", {array:true});
+{
+	val: [
+		'zero',
+		'one',
+		true,
+		'',
+		'four',
+		[ 'n1', 'n2', 'n3' ]
+	]
+}
 ```
