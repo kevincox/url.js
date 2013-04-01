@@ -111,9 +111,10 @@ var scheme = [
 	/^([a-z]*:)?(\/\/)?/,
 	/([a-z]*):/,
 ];
-var user  = /^([^:@]*)[:@]/;
-var pass  = /^([^@]*)@/;
+var user  = /^([^:@]*)(:[^@]*)?@/;
+var pass  = /^:([^@]*)@/;
 var host  = /^[A-Za-z-._]+/;
+var port  = /^:([0-9]*)/;
 var path  = /^\/[^?]*/;
 var query = /^\?(.*)/;
 
@@ -148,6 +149,7 @@ var query = /^\?(.*)/;
  * 	user: string,
  * 	pass: string,
  * 	host: string,
+ * 	port: number,
  * 	path: string,
  * 	query: string,
  * 	get: Object
@@ -174,13 +176,17 @@ self["parse"] = function(url, opt)
 		if ( u === null ) break;
 		r["user"] = decodeURIComponent(u[1]);
 
-		url = url.slice(u[0].length);
+		url = url.slice(u[1].length);
 
-		var p = url.match(pass)
-		if ( p === null ) break;
-		r["pass"] = decodeURIComponent(p[1]);
+		do {
+			var p = url.match(pass)
+			if ( p === null ) break;
+			r["pass"] = decodeURIComponent(p[1]);
 
-		url = url.slice(p[0].length);
+			url = url.slice(p[1].length+1); // +1 is for the ':'
+		} while (false);
+
+		url = url.slice(1); // Drop the '@'.
 	} while (false);
 
 	do {
@@ -189,6 +195,14 @@ self["parse"] = function(url, opt)
 		r["host"] = h[0];
 
 		url = url.slice(h[0].length);
+	} while (false);
+
+	do {
+		var p = url.match(port)
+		if ( p === null || p[1]==="" ) break;
+		r["port"] = parseInt(p[1]);
+
+		url = url.slice(p[0].length);
 	} while (false);
 
 	do {

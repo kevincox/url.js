@@ -1,6 +1,6 @@
 src='url.js'
 dest="${1:-url.min.js}"
-#min='true'
+min='true'
 
 if [ "$min" != 'true' ] ; then
 	m="$(cat "$src")"

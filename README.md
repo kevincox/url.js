@@ -37,6 +37,7 @@ url.parse("ftp://my.host.com/a/file?ftp=query%3F");
 {
 	"scheme": "ftp",
 	"host": "my.host.com",
+    "port": 1337,
 	"path": "/a/file",
 	"query": "ftp=query%3F",
 	"get": {

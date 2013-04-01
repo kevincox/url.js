@@ -58,14 +58,16 @@ assert.deepEqual(url.parse("//user:@/hi"), {
 	pass: "",
 	path: "/hi",
 });
-assert.deepEqual(url.parse("::pass@/hi?v=1&v2=%20"), {
+assert.deepEqual(url.parse("::pass@:1337/hi?v=1&v2=%20"), {
 	scheme: "",
 	user: "",
 	pass: "pass",
+	port: 1337,
 	path: "/hi",
 	query: "v=1&v2=%20",
 	get: {v:"1", "v2":" "},
 });
+assert.strictEqual(url.parse("http://example.com:1234").port, 1234)
 assert.deepEqual(url.parse("?a=1&b=2"), {
 	query: "a=1&b=2",
 	get: {a:"1", b:"2"},

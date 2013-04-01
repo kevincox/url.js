@@ -12,8 +12,8 @@ function pp(d){p(JSON.stringify(d, undefined, 4), undefined, 4)}
 p("From script tag:");
 p("Parse Document URL:");
 pp(url.parse(document.location.href));
-p("Parse ftp://my.host.com/a/file?ftp=query%3F");
-pp(url.parse("ftp://my.host.com/a/file?ftp=query%3F"));
+p("Parse ftp://my.host.com:1337/a/file?ftp=query%3F");
+pp(url.parse("ftp://my.host.com:1337/a/file?ftp=query%3F"));
 
 require.config({
 	baseUrl: "",
