@@ -21,6 +21,7 @@
 *  3. This notice may not be removed or altered from any source distribution.  *                                                           *
 *                                                                              *
 *******************************************************************************/
+
 "use strict";
 
 ///// Rename a couple of functions because closure doesn't want to do it for us.
@@ -169,7 +170,7 @@ var hash  = /^#(.*)$/;
  * 	be undefined even if `query` is set.
  *
  * @param{string} url The URL to parse.
- * @param{{get:Object|boolean}=} opt Options:
+ * @param{{get:Object}=} opt Options:
  * 	- get: An options argument to be passed to `get()` or false to not call
  * 		`get()`.  DO NOT set `full`.
  * @return{{
