@@ -5,6 +5,7 @@ var assert = require("assert");
 function test(url)
 {
 	var opt = {}, r;
+	var td;
 	///// Returns strings, not numbers.
 	assert.strictEqual(url.get("test=5").test, "5")
 	assert.strictEqual(url.get("test=05").test, "05")
@@ -38,30 +39,40 @@ function test(url)
 	assert.deepEqual(url.get("%5B%5D%3D%3F%26=%5B%5D%3D%3F%26"), {"[]=?&":"[]=?&"});
 	assert.deepEqual(url.get("%5B%5D%3D%3F%26[%5B%5D%3D%3F%26]=%5B%5D%3D%3F%26", opt), {"[]=?&":{"[]=?&":"[]=?&"}});
 
-	assert.deepEqual(url.parse("mailto:someone@example.com"), {
+	td = "mailto:someone@example.com";
+	assert.deepEqual(url.parse(td), {
+		url: td,
 		scheme: "mailto",
 		user: "someone",
 		host: "example.com",
 	});
-	assert.deepEqual(url.parse("http://localhost#why=do&this"), {
+	td = "http://localhost#why=do&this";
+	assert.deepEqual(url.parse(td), {
+		url: td,
 		scheme: "http",
 		host: "localhost",
 		hash: "why=do&this",
 	});
-	assert.deepEqual(url.parse("https://user:pass@many.sub.domain.com/"), {
+	td = "https://user:pass@many.sub.domain.com/";
+	assert.deepEqual(url.parse(td), {
+		url: td,
 		scheme: "https",
 		user: "user",
 		pass: "pass",
 		host: "many.sub.domain.com",
 		path: "/",
 	});
-	assert.deepEqual(url.parse("//user:@/hi#"), {
+	td = "//user:@/hi#";
+	assert.deepEqual(url.parse(td), {
+		url: td,
 		user: "user",
 		pass: "",
 		path: "/hi",
 		hash: "",
 	});
-	assert.deepEqual(url.parse("::pass@:1337/hi?v=1&v2=%20#anchor"), {
+	td = "::pass@:1337/hi?v=1&v2=%20#anchor";
+	assert.deepEqual(url.parse(td), {
+		url: td,
 		scheme: "",
 		user: "",
 		pass: "pass",
@@ -72,17 +83,31 @@ function test(url)
 		hash: "anchor",
 	});
 	assert.strictEqual(url.parse("http://example.com:1234").port, 1234)
-	assert.deepEqual(url.parse("?a=1&b=2"), {
+	td = "?a=1&b=2";
+	assert.deepEqual(url.parse(td), {
+		url: td,
 		query: "a=1&b=2",
 		get: {a:"1", b:"2"},
 	});
+
+	///// GET building.
+	td = {user:["hi","joe"],"r&[":{te:5, "t[vd]":["foo"]}}
+	assert.deepEqual(url.get(url.buildget(td),{array:true}), td);
+
+	///// URL building.
 }
 
 function run (path, desc)
 {
-	var url = require(path);
-	console.log("##### Testing "+desc+".");
-	test(url);
+	try {
+		var url = require(path);
+		console.log("##### Testing "+desc+".");
+		test(url);
+	} catch (e)
+	{
+		if ( e.code != 'MODULE_NOT_FOUND' )
+			throw e;
+	}
 }
 
 run("./url", "source version");

@@ -26,7 +26,15 @@
 
 ///// Rename a couple of functions because closure doesn't want to do it for us.
 
-var self = {};
+/**
+ * @const
+ */
+var self = {
+	"parse": parse,
+	"build": build,
+	"get": get,
+	"buildget": buildget,
+};
 
 var array = /\[([^\[\]]+)\]$/
 
@@ -70,7 +78,7 @@ var array = /\[([^\[\]]+)\]$/
  * 		If set keys in the form of `key[i]` will be treated as arrays/maps.
  * @return{!Object.<string, string|Array>} The parsed result.
  */
-self["get"] = function (q, opt) {
+function get(q, opt) {
 	q = q || "";
 	if ( typeof opt          == "undefined" ) opt = {};
 	if ( typeof opt["full"]  == "undefined" ) opt["full"] = false;
@@ -78,7 +86,7 @@ self["get"] = function (q, opt) {
 
 	if ( opt["full"] === true )
 	{
-		q = self["parse"](q, {"get":false})["query"];
+		q = parse(q, {"get":false})["query"];
 	}
 
 	var o = {};
@@ -133,6 +141,70 @@ self["get"] = function (q, opt) {
 	return o;
 };
 
+///// Make sure our control characters get encoded.
+var allchars = /./g;
+var keyencode = {'?':"%3F", '&':"%26", '[':"%5B", ']':"%5D", '=': "%3D"};
+var valencode = {'?':"%3F", '&':"%26"};
+function translatekey(d){return keyencode[d[0]] || d[0]}
+function translateval(d){return valencode[d[0]] || d[0]}
+function encodeKey(k)
+{
+	return encodeURI(k).replace(allchars, translatekey);
+}
+function encodeValue(k)
+{
+	return encodeURI(k).replace(allchars, translateval);
+}
+
+/// Build a get query from an object.
+/**
+ * This constructs a query string from the kv pairs in `data`.  Calling `get`
+ * on the string returned should return an object identical to the one passed
+ * in except all non-boolean scalar types become strings and all object types
+ * become arrays (non-integer keys are still present, see `get()`'s
+ * documentation for more details).
+ *
+ * This always uses array syntax for describing arrays.  If you want to
+ * serialize them differently (like having the value be a JSON array and have
+ * a plain key) you will need to do that before passing it in.
+ *
+ * All keys and values are supported (binary data anyone?) as they are properly
+ * URL-encoded and `get()` properly decodes.
+ *
+ * @param{Object} data The kv pairs.
+ * @param{string} The properly encoded array key to put the properties.  Mainly
+ *                intended for internal use.
+ * @return{string} A URL-safe string.
+ */
+function buildget(data, prefix)
+{
+	var itms = [];
+	for ( var k in data )
+	{
+		var ek = encodeKey(k);
+		if ( typeof prefix != "undefined" )
+			ek = prefix+"["+ek+"]";
+
+		var v = data[k];
+
+		switch (typeof v)
+		{
+			case 'boolean':
+				itms.push(ek);
+				break;
+			case 'number':
+				v = v.toString();
+			case 'string':
+				itms.push(ek+"="+encodeValue(v));
+				break;
+			case 'object':
+				itms.push(self["buildget"](v, ek));
+				break;
+		}
+	}
+	return itms.join("&");
+}
+
 var scheme = [
 	/^([a-z]*:)?(\/\/)?/,
 	/([a-z]*):/,
@@ -185,10 +257,12 @@ var hash  = /^#(.*)$/;
  * 	hash: string
  * }}
  */
-self["parse"] = function(url, opt)
+function parse(url, opt)
 {
 	var r = {}
 	if ( typeof opt == "undefined" ) opt = {};
+
+	r["url"] = url;
 
 	do {
 		var s0 = url.toLowerCase().match(scheme[0])
@@ -248,7 +322,7 @@ self["parse"] = function(url, opt)
 		if ( q === null ) break;
 		r["query"] = q[1];
 		if ( opt["get"] !== false )
-			r["get"] = self["get"](r["query"], opt["get"]);
+			r["get"] = get(r["query"], opt["get"]);
 
 		url = url.slice(q[0].length);
 	} while (false);
@@ -264,6 +338,78 @@ self["parse"] = function(url, opt)
 	return r;
 }
 
-if ( typeof define != "undefined" && define["amd"] ) define([], self);
-else if ( typeof module != "undefined" ) module["exports"] = self;
+var noslash = ["mailto","bitcoin"];
+
+/// Build a URL from components.
+/**
+ * This pieces together a url from the properties of the passed in object.  In
+ * general passing the result of `parse()` should return the URL.  There may
+ * differences in the get string as the keys and values might be more encoded
+ * then they were originally were.  However, calling `get()` on the two values
+ * should yield the same result.
+ *
+ * Here is how the parameters are used.
+ *  - url: Used only if no other values are provided.  If that is the case url
+ *     will be returned verbatim.
+ *  - scheme: Used if defined.
+ *  - user: Used if defined.
+ *  - pass: Used if defined.
+ *  - host: Used if defined.
+ *  - path: Used if defined.
+ *  - query: Used only if `get` is not provided.
+ *  - get: Used if defined.
+ *  - hash: Used if defined.
+ *
+ * @param{Object} data The pieces of the URL.
+ * @return{string} The URL.
+ */
+function build(data)
+{
+	var r = "";
+
+	if ( typeof data["scheme"] != "undefined" )
+	{
+		r += data["scheme"];
+		r += (noslash.indexOf(data["scheme"])>=0)?":":"://";
+	}
+	if ( typeof data["user"] != "undefined" )
+	{
+		r += data["user"];
+		if ( typeof data["pass"] == "undefined" )
+		{
+			r += "@";
+		}
+	}
+	if ( typeof data["pass"] != "undefined" )
+	{
+		r += ":" + data["pass"] + "@";
+	}
+	if ( typeof data["host"] != "undefined" )
+	{
+		r += data["host"];
+	}
+	if ( typeof data["path"] != "undefined" )
+	{
+		r += data["path"];
+	}
+
+	if ( typeof data["get"] != "undefined" )
+	{
+		r += "?" + buildget(data["get"]);
+	}
+	else if ( typeof data["query"] != "undefined" )
+	{
+		r += "?" + data["query"];
+	}
+
+	if ( typeof data["hash"] != "undefined" )
+	{
+		r += "#" + data["hash"];
+	}
+
+	return r || data["url"];
+};
+
+if ( typeof define != "undefined" && define["amd"] ) define(self);
+else if ( typeof module != "undefined" ) module['exports'] = self;
 else window["url"] = self;

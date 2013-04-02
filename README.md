@@ -25,6 +25,8 @@ Check out example.html for a number, but here are the basics.  The objects
 after the function calls are the return values.
 
 ```js
+#! /usr/bin/node -i
+
 // Parse Document URL
 url.parse(document.location.href);
 {
@@ -85,4 +87,74 @@ url.get("val[0]=zero&val[1]=one&val[2]&val[3]=&val[4]=four&val[5][0]=n1&val[5][1
 		[ 'n1', 'n2', 'n3' ]
 	]
 }
+
+// Building URLs
+url.build({scheme:"ssh",user:"kevin",host:"example.org"});
+'ssh://kevin@example.org'
+
+// Complex query strings are a snap.
+url.build({scheme:"https",host:"api.example.org",get:{format:"json",v:"4",request:[1,2,3,6,7],auth:":D"}});
+'https://api.example.org?format=json&v=4&request[0]=1&request[1]=2&request[2]=3&request[3]=6&request[4]=7&auth=:D'
+
+// Nested arrays and ugly values!
+var param = url.buildget({
+	"!![2][5]": "**",
+	"data": [
+		"push",
+		{
+			client:182,
+			type:"mesage",
+			data: {id:1827,subject:"Who are you?"},
+		},
+		"update",
+		{
+			client: 39284,
+			type: "request",
+			data: {
+				critical:true,
+				hash: "24-0/4/42342:{?$@{@?$",
+			}
+		}
+	],
+});
+'!!%5B2%5D%5B5%5D=**&data[0]=push&data[1][client]=182&data[1][type]=mesage&data[1][data][id]=1827&data[1][data][subject]=Who%20are%20you%3F&data[2]=update&data[3][client]=39284&data[3][type]=request&data[3][data][critical]&data[3][data][hash]=24-0/4/42342:%7B%3F$@%7B@%3F$'
+// I sincerely hope that you never have a request that looks like that.
+
+// And you can parse it back out.
+url.get(param);
+{
+	'!![2][5]': '**',
+	'data[0]': 'push',
+	'data[1][client]': '182',
+	'data[1][type]': 'mesage',
+	'data[1][data][id]': '1827',
+	'data[1][data][subject]': 'Who are you?',
+	'data[2]': 'update',
+	'data[3][client]': '39284',
+	'data[3][type]': 'request',
+	'data[3][data][critical]': true,
+	'data[3][data][hash]': '24-0/4/42342:{?$@{@?$'
+}
+// And if you use `{array:true}` you should get the same thing back.
+url.get(param,{array:true});
+{
+	'!![2][5]': '**',
+	data: [
+		'push',
+		[
+			client: '182',
+			type: 'mesage',
+			data: [ id: '1827', subject: 'Who are you?' ]
+		],
+		'update',
+		[
+			client: '39284',
+			type: 'request',
+			data: [ critical: true, hash: '24-0/4/42342:{?$@{@?$' ]
+		],
+	]
+}
+// This the is output of node's `console.log()` notice that the maps in `data` are
+// technically arrays.  Also notice that even though "!![2][5]" is in an array
+// format it was encoded and decoded properly so it was kept as a string key.
 ```

@@ -1,11 +1,16 @@
 src='url.js'
-dest="${1:-url.min.js}"
-min='true'
+dest='url.min.js'
+min="${1:-true}"
 
-if [ "$min" != 'true' ] ; then
+#debug='--debug --formatting PRETTY_PRINT'
+
+if [ "$min" == 'noexport' ] ; then
+	m="$(perl -pe 's/\["([A-Za-z_]+)"\]/.$1/g; s/"([A-Za-z_]+)":/$1:/g' "$src")"
+elif [ "$min" != 'true' ] ; then
 	m="$(cat "$src")"
 elif which closure &>/dev/null ; then
 	m="$(closure --language_in ECMASCRIPT5_STRICT --js "$src" \
+	             $debug \
 	             --compilation_level ADVANCED_OPTIMIZATIONS
 	    )"
 #elif which uglifyjs &>/dev/null ; then
