@@ -78,15 +78,14 @@ function test(url)
 	});
 }
 
-try {
-	var url = require("./url");
-	console.log("##### Testing source version.");
+function run (path, desc)
+{
+	var url = require(path);
+	console.log("##### Testing "+desc+".");
 	test(url);
-} catch(err){}
-try {
-	var url = require("./url.min");
-	console.log("##### Testing built version.");
-	test(url);
-} catch(err){}
+}
+
+run("./url", "source version");
+run("./url.min", "built version");
 
 console.log("Tests complete!");

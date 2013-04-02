@@ -21,8 +21,9 @@
 *  3. This notice may not be removed or altered from any source distribution.  *                                                           *
 *                                                                              *
 *******************************************************************************/
-
 "use strict";
+
+///// Rename a couple of functions because closure doesn't want to do it for us.
 
 var self = {};
 
@@ -139,7 +140,7 @@ var user  = /^([^:@]*)(:[^@]*)?@/;
 var pass  = /^:([^@]*)@/;
 var host  = /^[A-Za-z-._]+/;
 var port  = /^:([0-9]*)/;
-var path  = /^\/[^?]*/;
+var path  = /^\/[^?#]*/;
 var query = /^\?([^#]*)/;
 var hash  = /^#(.*)$/;
 
@@ -194,7 +195,7 @@ self["parse"] = function(url, opt)
 		if ( typeof s0[1] !== "undefined" )
 		{
 			var s1 = s0[1].match(scheme[1])
-			r["scheme"] = decodeURIComponent(s1[1]);
+			r["scheme"] = s1[1];
 		}
 		url = url.slice(s0[0].length);
 	} while (false);
