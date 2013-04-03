@@ -211,7 +211,7 @@ var scheme = [
 ];
 var user  = /^([^:@]*)(:[^@]*)?@/;
 var pass  = /^:([^@]*)@/;
-var host  = /^[A-Za-z-._]+/;
+var host  = /^[0-9A-Za-z-._]+/;
 var port  = /^:([0-9]*)/;
 var path  = /^\/[^?#]*/;
 var query = /^\?([^#]*)/;
