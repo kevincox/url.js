@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head>
+	<meta charset="utf-8"/>
+	<title>url.js tests</title>
+	<link href="{{{mocha}}}/mocha.css" rel="stylesheet" media="screen"/>
+	<script src="{{{mocha}}}/mocha.js"></script>
+	<script src="{{{url}}}"></script>
+</head>
+<body>
+	<div id="mocha"></div>
+	<script>mocha.setup('bdd');</script>
+	<script src="{{{expect}}}"></script>
+	{{{tests}}}
+	<script>
+		mocha.checkLeaks();
+		mocha.run();
+	</script>
+	</body>
+</html>

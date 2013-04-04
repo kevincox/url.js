@@ -23,10 +23,3 @@ fi
 m="(function(){$m})();"
 
 echo "$m" > "$dest"
-
-if which node &>/dev/null; then
-	echo "Built, running tests..."
-	node "test.js"
-else
-	echo "Node not found, skipping tests."
-fi
