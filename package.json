@@ -1,0 +1,36 @@
+{
+	"name": "url.js",
+	"version": "0.0.0",
+	"description": "URL building and parsing.",
+	"main": "url.js",
+	"homepage": "https://github.com/kevincox/url.js",
+	"bugs": {
+		"url": "https://github.com/kevincox/url.js/issues",
+		"email": "kevincox.ca@gmail.com"
+	},
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "mocha"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"mocha": "*",
+		"expect.js": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/kevincox/url.js.git"
+	},
+	"keywords": [
+		"URL",
+		"get",
+		"query"
+	],
+	"author": "Kevin Cox",
+	"license": "zlib",
+	"readmeFilename": "README.md",
+	"gitHead": "c0cc63b575a357d2ccbcd413d44c409a498aeb89"
+}
