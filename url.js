@@ -125,9 +125,9 @@ function get(q, opt) {
 				}
 
 				curo = curo[curk];
-				
+
 				if ( i === "" ) i = curo.length;
-				
+
 				curk = i;
 			})) continue;
 			curo[curk] = v;

@@ -46,7 +46,7 @@ describe('.get()', function()
 		expect(url.get("%5B%5D%3D%3F%26=%5B%5D%3D%3F%26")).to.eql({"[]=?&":"[]=?&"});
 		expect(url.get("%5B%5D%3D%3F%26[%5B%5D%3D%3F%26]=%5B%5D%3D%3F%26",{array:true})).to.eql({"[]=?&":{"[]=?&":"[]=?&"}});
 	});
-	
+
 	it("should automaically assign indicies", function() {
 		expect(url.get("a[]=0&a[]=1&a[]=2", {array:true})).to.eql({a:["0","1","2"]});
 	});
