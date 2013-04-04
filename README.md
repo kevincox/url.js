@@ -183,3 +183,7 @@ url.get(param,{array:true});
 // technically arrays.  Also notice that even though "!![2][5]" is in an array
 // format it was encoded and decoded properly so it was kept as a string key.
 ```
+
+If you want more examples, look at our tests in the `test/` directory.  Or you
+can view the live test of our master branch at
+http://kevincox.github.com/url.js/test.html.
