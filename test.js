@@ -38,6 +38,9 @@ function test(url)
 	///// URL Encoding
 	assert.deepEqual(url.get("%5B%5D%3D%3F%26=%5B%5D%3D%3F%26"), {"[]=?&":"[]=?&"});
 	assert.deepEqual(url.get("%5B%5D%3D%3F%26[%5B%5D%3D%3F%26]=%5B%5D%3D%3F%26", opt), {"[]=?&":{"[]=?&":"[]=?&"}});
+	
+	///// Auto indicies.
+	assert.deepEqual(url.get("a[]=0&a[]=1&a[]=2", {array:true}), {a:["0","1","2"]});
 
 	td = "mailto:someone@example.com";
 	assert.deepEqual(url.parse(td), {
