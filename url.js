@@ -50,8 +50,7 @@ var array = /\[([^\[]*)\]$/
  *
  * Keys and values will always be strings, except if there is a key with no
  * '=' in which case it will be considered a flag and will be set to true.
- * Later values will override earlier values and a warning will be printed to
- * the console.
+ * Later values will override earlier values.
  *
  * Array keys are also supported.  By default keys in the form of `name[i]` will
  * be returned like that as strings.  However, if you set the `array` flag in
@@ -121,7 +120,7 @@ function get(q, opt) {
 				if ( typeof curo[curk] == "undefined" ) curo[curk] = [];
 				if (!Array.isArray(curo[curk]))
 				{
-					console.log("url.get: Array property "+curk+" already exists as string!");
+					//console.log("url.get: Array property "+curk+" already exists as string!");
 					return true;
 				}
 
@@ -137,7 +136,7 @@ function get(q, opt) {
 
 		k = decodeURIComponent(k);
 
-		typeof o[k] == "undefined" || console.log("Property "+k+" already exists!");
+		//typeof o[k] == "undefined" || console.log("Property "+k+" already exists!");
 		o[k] = v;
 	}
 
