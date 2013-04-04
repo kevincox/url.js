@@ -1,5 +1,8 @@
 # url.js
 
+
+[![Build Status](https://travis-ci.org/kevincox/url.js.png?branch=master)](https://travis-ci.org/kevincox/url.js)
+
 A high level URL parser in javascript.
 
 ## Loading
