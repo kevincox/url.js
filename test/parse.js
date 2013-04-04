@@ -9,6 +9,30 @@ describe('.parse()', function()
 	var tests = [];
 	var td;
 
+	it("should parse ftp://my.host.com:1337/a/file?ftp=query%3F#anchor", function() {
+		expect(url.parse("ftp://my.host.com:1337/a/file?ftp=query%3F#anchor"))
+			.to.eql({
+				"url": "ftp://my.host.com:1337/a/file?ftp=query%3F#anchor",
+				"scheme": "ftp",
+				"host": "my.host.com",
+				"port": 1337,
+				"path": "/a/file",
+				"query": "ftp=query%3F",
+				"get": {
+					"ftp": "query?"
+				},
+				"hash": "anchor"
+			});
+	});
+	it("should parse mailto:kevincox.ca@gmail.com", function() {
+		expect(url.parse("mailto:kevincox.ca@gmail.com"))
+			.to.eql({
+				"url": "mailto:kevincox.ca@gmail.com",
+				"scheme": "mailto",
+				"user": "kevincox.ca",
+				"host": "gmail.com"
+			});
+	});
 	it("should parse emails", function() {
 		var td = "mailto:someone@example.com";
 		expect(url.parse(td)).to.eql({

@@ -36,8 +36,8 @@ url.parse(document.location.href);
     "path": "/home/kevin/url.js/example.html"
 }
 
-// Parse ftp://my.host.com/a/file?ftp=query%3F#anchor
-url.parse("ftp://my.host.com/a/file?ftp=query%3F#anchor");
+// Parse ftp://my.host.com:1337/a/file?ftp=query%3F#anchor
+url.parse("ftp://my.host.com:1337/a/file?ftp=query%3F#anchor");
 {
     "url": "ftp://my.host.com:1337/a/file?ftp=query%3F#anchor",
     "scheme": "ftp",
