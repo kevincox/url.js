@@ -85,8 +85,16 @@ describe('.get()', function()
 		expect(url.get("%5B%5D%3D%3F%26[%5B%5D%3D%3F%26]=%5B%5D%3D%3F%26",{array:true})).to.eql({"[]=?&":{"[]=?&":"[]=?&"}});
 	});
 
-	it("should automaically assign indicies", function() {
+	it("should automatically assign indices", function() {
 		expect(url.get("a[]=0&a[]=1&a[]=2", {array:true})).to.eql({a:["0","1","2"]});
+	});
+
+	it("should overwrite automatic indices", function() {
+		expect(url.get("a[]=0&a[]=1&a[0]=2", {array:true})).to.eql({a:["2","1"]});
+	});
+
+	it("automatic indices can be safely appended", function() {
+		expect(url.get("a[0]=0&a[1]=1&a[]=2", {array:true})).to.eql({a:["0","1","2"]});
 	});
 
 	it("should parse crazy URLs", function() {
