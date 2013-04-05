@@ -98,6 +98,7 @@ describe('.parse()', function()
 	});
 
 	it("port should be a number", function() {
-		expect(url.parse("http://example.com:1234").port).to.equal(1234);
+		expect(url.parse("http://example.com:1234"))
+			.to.have.property("port", 1234);
 	});
 });
