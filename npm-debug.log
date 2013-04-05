@@ -1,0 +1,172 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'publish' ]
+2 info using npm@1.2.15
+3 info using node@v0.10.2
+4 verbose publish [ '.' ]
+5 verbose read json /home/kevin/url.js/package.json
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /home/kevin/.npm/3a52ce78-.lock
+11 verbose read json package.json
+12 verbose tar pack [ '/home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz',
+12 verbose tar pack   '.' ]
+13 verbose tarball /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+14 verbose folder .
+15 info prepublish url.js@0.0.0
+16 silly lockFile 3a52ce78- .
+17 verbose lock . /home/kevin/.npm/3a52ce78-.lock
+18 silly lockFile a8caf890-20248-0-8787955241277814-tmp-tgz /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+19 verbose lock /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz /home/kevin/.npm/a8caf890-20248-0-8787955241277814-tmp-tgz.lock
+20 silly lockFile 3a52ce78- .
+21 silly lockFile 3a52ce78- .
+22 silly lockFile a8caf890-20248-0-8787955241277814-tmp-tgz /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+23 silly lockFile a8caf890-20248-0-8787955241277814-tmp-tgz /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+24 verbose tar unpack /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+25 silly lockFile 3d98c277-20248-0-8787955241277814-package /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+26 verbose lock /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package /home/kevin/.npm/3d98c277-20248-0-8787955241277814-package.lock
+27 silly lockFile a8caf890-20248-0-8787955241277814-tmp-tgz /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+28 verbose lock /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz /home/kevin/.npm/a8caf890-20248-0-8787955241277814-tmp-tgz.lock
+29 silly gunzTarPerm modes [ '755', '644' ]
+30 silly gunzTarPerm extractEntry package.json
+31 silly gunzTarPerm extractEntry .npmignore
+32 silly gunzTarPerm extractEntry README.md
+33 silly gunzTarPerm extractEntry example-closure.js
+34 silly gunzTarPerm extractEntry mocha.js
+35 silly gunzTarPerm extractEntry expect.js
+36 silly gunzTarPerm extractEntry url.js
+37 silly gunzTarPerm extractEntry genhtmltest.js
+38 silly gunzTarPerm extractEntry .travis.yml
+39 silly gunzTarPerm extractEntry min.sh
+40 silly gunzTarPerm extractEntry mocha.css
+41 silly gunzTarPerm extractEntry example-closure.sh
+42 silly gunzTarPerm extractEntry example-closure.html
+43 silly gunzTarPerm extractEntry test/build.js
+44 silly gunzTarPerm extractEntry test/buildget.js
+45 silly gunzTarPerm extractEntry test/get.js
+46 silly gunzTarPerm extractEntry test/parse.js
+47 silly gunzTarPerm extractEntry test/mocha.opts
+48 silly gunzTarPerm extractEntry test/test.html
+49 verbose read json /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package/package.json
+50 silly lockFile 3d98c277-20248-0-8787955241277814-package /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+51 silly lockFile 3d98c277-20248-0-8787955241277814-package /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+52 silly lockFile a8caf890-20248-0-8787955241277814-tmp-tgz /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+53 silly lockFile a8caf890-20248-0-8787955241277814-tmp-tgz /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/tmp.tgz
+54 verbose from cache /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package/package.json
+55 verbose tar pack [ '/home/kevin/.npm/url.js/0.0.0/package.tgz',
+55 verbose tar pack   '/home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package' ]
+56 verbose tarball /home/kevin/.npm/url.js/0.0.0/package.tgz
+57 verbose folder /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+58 silly lockFile 3d98c277-20248-0-8787955241277814-package /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+59 verbose lock /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package /home/kevin/.npm/3d98c277-20248-0-8787955241277814-package.lock
+60 silly lockFile 03a51f4d-vin-npm-url-js-0-0-0-package-tgz /home/kevin/.npm/url.js/0.0.0/package.tgz
+61 verbose lock /home/kevin/.npm/url.js/0.0.0/package.tgz /home/kevin/.npm/03a51f4d-vin-npm-url-js-0-0-0-package-tgz.lock
+62 silly lockFile 3d98c277-20248-0-8787955241277814-package /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+63 silly lockFile 3d98c277-20248-0-8787955241277814-package /home/kevin/tmp/npm-17053/1365138820248-0.8787955241277814/package
+64 silly lockFile 03a51f4d-vin-npm-url-js-0-0-0-package-tgz /home/kevin/.npm/url.js/0.0.0/package.tgz
+65 silly lockFile 03a51f4d-vin-npm-url-js-0-0-0-package-tgz /home/kevin/.npm/url.js/0.0.0/package.tgz
+66 silly lockFile 145c8a2a-e-kevin-npm-url-js-0-0-0-package /home/kevin/.npm/url.js/0.0.0/package
+67 verbose lock /home/kevin/.npm/url.js/0.0.0/package /home/kevin/.npm/145c8a2a-e-kevin-npm-url-js-0-0-0-package.lock
+68 silly lockFile 145c8a2a-e-kevin-npm-url-js-0-0-0-package /home/kevin/.npm/url.js/0.0.0/package
+69 silly lockFile 145c8a2a-e-kevin-npm-url-js-0-0-0-package /home/kevin/.npm/url.js/0.0.0/package
+70 verbose tar unpack /home/kevin/.npm/url.js/0.0.0/package.tgz
+71 silly lockFile 145c8a2a-e-kevin-npm-url-js-0-0-0-package /home/kevin/.npm/url.js/0.0.0/package
+72 verbose lock /home/kevin/.npm/url.js/0.0.0/package /home/kevin/.npm/145c8a2a-e-kevin-npm-url-js-0-0-0-package.lock
+73 silly lockFile 03a51f4d-vin-npm-url-js-0-0-0-package-tgz /home/kevin/.npm/url.js/0.0.0/package.tgz
+74 verbose lock /home/kevin/.npm/url.js/0.0.0/package.tgz /home/kevin/.npm/03a51f4d-vin-npm-url-js-0-0-0-package-tgz.lock
+75 silly gunzTarPerm modes [ '755', '644' ]
+76 silly gunzTarPerm extractEntry package.json
+77 silly gunzTarPerm extractEntry .npmignore
+78 silly gunzTarPerm extractEntry README.md
+79 silly gunzTarPerm extractEntry example-closure.js
+80 silly gunzTarPerm extractEntry mocha.js
+81 silly gunzTarPerm extractEntry expect.js
+82 silly gunzTarPerm extractEntry url.js
+83 silly gunzTarPerm extractEntry genhtmltest.js
+84 silly gunzTarPerm extractEntry .travis.yml
+85 silly gunzTarPerm extractEntry min.sh
+86 silly gunzTarPerm extractEntry mocha.css
+87 silly gunzTarPerm extractEntry example-closure.sh
+88 silly gunzTarPerm extractEntry example-closure.html
+89 silly gunzTarPerm extractEntry test/build.js
+90 silly gunzTarPerm extractEntry test/buildget.js
+91 silly gunzTarPerm extractEntry test/get.js
+92 silly gunzTarPerm extractEntry test/parse.js
+93 silly gunzTarPerm extractEntry test/mocha.opts
+94 silly gunzTarPerm extractEntry test/test.html
+95 verbose read json /home/kevin/.npm/url.js/0.0.0/package/package.json
+96 silly lockFile 145c8a2a-e-kevin-npm-url-js-0-0-0-package /home/kevin/.npm/url.js/0.0.0/package
+97 silly lockFile 145c8a2a-e-kevin-npm-url-js-0-0-0-package /home/kevin/.npm/url.js/0.0.0/package
+98 silly lockFile 03a51f4d-vin-npm-url-js-0-0-0-package-tgz /home/kevin/.npm/url.js/0.0.0/package.tgz
+99 silly lockFile 03a51f4d-vin-npm-url-js-0-0-0-package-tgz /home/kevin/.npm/url.js/0.0.0/package.tgz
+100 silly shasum updated bytes 46762
+101 info shasum 861caf3ea78a003b38e18a00b467301b9115e9a2
+101 info shasum /home/kevin/.npm/url.js/0.0.0/package.tgz
+102 verbose from cache /home/kevin/.npm/url.js/0.0.0/package/package.json
+103 verbose chmod /home/kevin/.npm/url.js/0.0.0/package.tgz 644
+104 verbose chown /home/kevin/.npm/url.js/0.0.0/package.tgz [ 1001, 1001 ]
+105 silly lockFile 3a52ce78- .
+106 silly publish { name: 'url.js',
+106 silly publish   version: '0.0.0',
+106 silly publish   description: 'URL building and parsing.',
+106 silly publish   main: 'url.js',
+106 silly publish   homepage: 'https://github.com/kevincox/url.js',
+106 silly publish   bugs:
+106 silly publish    { url: 'https://github.com/kevincox/url.js/issues',
+106 silly publish      email: 'kevincox.ca@gmail.com' },
+106 silly publish   directories: { test: 'test' },
+106 silly publish   scripts: { test: 'mocha' },
+106 silly publish   dependencies: {},
+106 silly publish   devDependencies: { mocha: '*', chai: '*' },
+106 silly publish   repository: { type: 'git', url: 'git://github.com/kevincox/url.js.git' },
+106 silly publish   keywords: [ 'URL', 'get', 'query' ],
+106 silly publish   author: { name: 'Kevin Cox' },
+106 silly publish   license: 'zlib',
+106 silly publish   readmeFilename: 'README.md',
+106 silly publish   gitHead: 'c0cc63b575a357d2ccbcd413d44c409a498aeb89',
+106 silly publish   readme: '# url.js\n\n[![Build Status](https://travis-ci.org/kevincox/url.js.png?branch=master)](https://travis-ci.org/kevincox/url.js)\n\nA high level URL parser in javascript.\n\n## Loading\n\nURL.js works as an AMD module (ex: requirejs), a node module or will make itself\nglobal under the name `url`.\n\n```bash\n$ npm install url.js\n$ node\n> var url = require("url.js");\n```\n\n```html\n<script src="url.js"></script>\n```\n\n```javascript\nrequire(["url"], function(url){});\n```\n\n## Documentation\nThere is very clear documentation comments in the source.  Feel free to\n[email me](kevincox.ca@gmail.com) if you have any questions.\n\n## Building\nThe script will work as is, but exports a few variables.  The build script\noptimizes and wraps it in a closure.  Ensure that you wrap it in a closure if\nyou are going to concatenate it with other scripts as it uses strict mode.\n\nYou can use any compressor/optimizer with this script.  It works with closure\nADVANCED_OPTIMIZATIONS.  You can run the `min.sh` script in the main directory\nto minify it into `url.min.js`.  If you are using closure in your project and\nwant the maximum benifiy call `./min.sh noexport` and it will output a copy of\nthe source where the property names are not quoted.  You can then compile that\nfile into your source with `ADVANCED_OPTIMIZATIONS`.  See `example-closure.*`\nin the source for an example.\n\n## Examples\n\nHere are a number of examples of usage.  They are probably all you need but\nthere is complete documentation in the source.\n\n```js\n// Parse Document URL\nurl.parse(document.location.href);\n{\n    "url": "file:///home/kevin/url.js/example.html",\n    "scheme": "file",\n    "path": "/home/kevin/url.js/example.html"\n}\n\n// Parse ftp://my.host.com:1337/a/file?ftp=query%3F#anchor\nurl.parse("ftp://my.host.com:1337/a/file?ftp=query%3F#anchor");\n{\n    "url": "ftp://my.host.com:1337/a/file?ftp=query%3F#anchor",\n    "scheme": "ftp",\n    "host": "my.host.com",\n    "port": 1337,\n    "path": "/a/file",\n    "query": "ftp=query%3F",\n    "get": {\n        "ftp": "query?"\n    },\n    "hash": "anchor"\n}\n\n// Parse email mailto:kevincox.ca@gmail.com\nurl.parse("mailto:kevincox.ca@gmail.com");\n{\n    "url": "mailto:kevincox.ca@gmail.com",\n    "scheme": "mailto",\n    "user": "kevincox.ca",\n    "host": "gmail.com"\n}\n\n// Parse query string:\nurl.get("foo=bar&flag&a[0]=zero&a[2]=two&na[1][0]=nested&na[1][foo]=stillnested");\n{\n\t"foo": "bar",\n\t"flag": true,\n\t"a[0]": "zero",\n\t"a[2]": "two",\n\t"na[1][0]": "nested",\n\t"na[1][foo]": "stillnested"\n}\n// Same string with array enabled.\nurl.get(\n\t"foo=bar&flag&a[0]=zero&a[2]=two&na[1][0]=nested&na[1][foo]=stillnested",\n\t{array:true}\n);\n{\n\tfoo: \'bar\',\n\tflag: true,\n\ta: [ \'zero\', , \'two\' ],\n\tna: [\n\t\t, // Node prints an undefined for the missing index.\n\t\t[ \'nested\', foo: \'stillnested\' ]\n\t]\n}\n\n\n// A clean example without missing values.\nurl.get("val[0]=zero&val[1]=one&val[2]&val[3]=&val[4]=four&val[5][0]=n1&" +\n        "val[5][1]=n2&val[5][2]=n3", {array:true});\n{\n\tval: [\n\t\t\'zero\',\n\t\t\'one\',\n\t\ttrue,\n\t\t\'\',\n\t\t\'four\',\n\t\t[ \'n1\', \'n2\', \'n3\' ]\n\t]\n}\n\n// Building URLs\nurl.build({scheme:"ssh",user:"kevin",host:"example.org"});\n\'ssh://kevin@example.org\'\n\n// Complex query strings are a snap.\nurl.build({\n\tscheme:"https",\n\thost:"api.example.org",\n\tget: {\n\t\tformat:"json",\n\t\tv:"4",\n\t\trequest:[1,2,3,6,7],\n\t\tauth:":D"\n\t}\n});\n\'https://api.example.org?format=json&v=4&request[0]=1&request[1]=2&\' +\n\'request[2]=3&request[3]=6&request[4]=7&auth=:D\'\n\n// Nested arrays and ugly values!\nvar param = url.buildget({\n\t"!![2][5]": "**",\n\t"data": [\n\t\t"push",\n\t\t{\n\t\t\tclient:182,\n\t\t\ttype:"mesage",\n\t\t\tdata: {id:1827,subject:"Who are you?"},\n\t\t},\n\t\t"update",\n\t\t{\n\t\t\tclient: 39284,\n\t\t\ttype: "request",\n\t\t\tdata: {\n\t\t\t\tcritical:true,\n\t\t\t\thash: "24-0/4/42342:{?$@{@?$",\n\t\t\t}\n\t\t}\n\t],\n});\n\'!!%5B2%5D%5B5%5D=**&data[0]=push&data[1][client]=182&data[1][type]=mesage&\' +\n\'data[1][data][id]=1827&data[1][data][subject]=Who%20are%20you%3F&data[2]=u\' +\n\'pdate&data[3][client]=39284&data[3][type]=request&data[3][data][critical]&\' +\n\'data[3][data][hash]=24-0/4/42342:%7B%3F$@%7B@%3F$\'\n// I sincerely hope that you never have a request that looks like that.\n\n// And you can parse it back out.\nurl.get(param);\n{\n\t\'!![2][5]\': \'**\',\n\t\'data[0]\': \'push\',\n\t\'data[1][client]\': \'182\',\n\t\'data[1][type]\': \'mesage\',\n\t\'data[1][data][id]\': \'1827\',\n\t\'data[1][data][subject]\': \'Who are you?\',\n\t\'data[2]\': \'update\',\n\t\'data[3][client]\': \'39284\',\n\t\'data[3][type]\': \'request\',\n\t\'data[3][data][critical]\': true,\n\t\'data[3][data][hash]\': \'24-0/4/42342:{?$@{@?$\'\n}\n// And if you use `{array:true}` you should get the same thing back.\nurl.get(param,{array:true});\n{\n\t\'!![2][5]\': \'**\',\n\tdata: [\n\t\t\'push\',\n\t\t[\n\t\t\tclient: \'182\',\n\t\t\ttype: \'mesage\',\n\t\t\tdata: [ id: \'1827\', subject: \'Who are you?\' ]\n\t\t],\n\t\t\'update\',\n\t\t[\n\t\t\tclient: \'39284\',\n\t\t\ttype: \'request\',\n\t\t\tdata: [ critical: true, hash: \'24-0/4/42342:{?$@{@?$\' ]\n\t\t],\n\t]\n}\n// This the is output of node\'s `console.log()` notice that the maps in `data` are\n// technically arrays.  Also notice that even though "!![2][5]" is in an array\n// format it was encoded and decoded properly so it was kept as a string key.\n```\n\nIf you want more examples, look at our tests in the `test/` directory.  Or you\ncan run/view the live test of our master branch at\nhttp://kevincox.github.com/url.js/test.html.\n',
+106 silly publish   _id: 'url.js@0.0.0',
+106 silly publish   dist: { shasum: '861caf3ea78a003b38e18a00b467301b9115e9a2' },
+106 silly publish   _from: '.' }
+107 verbose url raw url.js
+108 verbose url resolving [ 'https://registry.npmjs.org/', './url.js' ]
+109 verbose url resolved https://registry.npmjs.org/url.js
+110 info trying registry request attempt 1 at 01:13:52
+111 http PUT https://registry.npmjs.org/url.js
+112 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+113 info trying registry request attempt 2 at 01:14:02
+114 http PUT https://registry.npmjs.org/url.js
+115 http 409 https://registry.npmjs.org/url.js
+116 verbose url raw url.js
+117 verbose url resolving [ 'https://registry.npmjs.org/', './url.js' ]
+118 verbose url resolved https://registry.npmjs.org/url.js
+119 info trying registry request attempt 1 at 01:14:03
+120 http GET https://registry.npmjs.org/url.js
+121 http 200 https://registry.npmjs.org/url.js
+122 error publish fail Cannot publish over existing version.
+122 error publish fail Update the 'version' field in package.json and try again.
+122 error publish fail
+122 error publish fail If the previous version was published in error, see:
+122 error publish fail     npm help unpublish
+122 error publish fail
+122 error publish fail To automatically increment version numbers, see:
+122 error publish fail     npm help version
+123 error System Linux 3.8.4-1-ARCH
+124 error command "/usr/bin/node" "/usr/bin/npm" "publish"
+125 error cwd /home/kevin/url.js
+126 error node -v v0.10.2
+127 error npm -v 1.2.15
+128 error code EPUBLISHCONFLICT
+129 verbose exit [ 1, true ]

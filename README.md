@@ -1,6 +1,5 @@
 # url.js
 
-
 [![Build Status](https://travis-ci.org/kevincox/url.js.png?branch=master)](https://travis-ci.org/kevincox/url.js)
 
 A high level URL parser in javascript.
@@ -10,8 +9,31 @@ A high level URL parser in javascript.
 URL.js works as an AMD module (ex: requirejs), a node module or will make itself
 global under the name `url`.
 
+### Node, via npm
+```bash
+$ npm install url.js # The version in the npm registry, likely a bit old.
+$ npm install git://github.com/kevincox/url.js.git # Get the latest and greatest.
+$ node
+> var url = require("url.js");
+```
+### Node, via the source.
+```javascript
+// You need the "./" or it will load the built in URL module.
+var url = require("./url");
+```
+
+### AMD Loaders
+```javascript
+require(["url"], function(url){});
+```
+
+### Good ol' Script Tag
+```html
+<script src="url.js"></script>
+```
+
 ## Documentation
-There is very clear documentation in the source.  Feel free to
+There is very clear documentation comments in the source.  Feel free to
 [email me](kevincox.ca@gmail.com) if you have any questions.
 
 ## Building
@@ -20,12 +42,36 @@ optimizes and wraps it in a closure.  Ensure that you wrap it in a closure if
 you are going to concatenate it with other scripts as it uses strict mode.
 
 You can use any compressor/optimizer with this script.  It works with closure
-ADVANCED_OPTIMIZATIONS.
+`ADVANCED_OPTIMIZATIONS`.  You can run the `min.sh` script in the main directory
+to minify it into `url.min.js`.  If you are using closure in your project and
+want the maximum benefit call `./min.sh noexport` and it will output a copy of
+the source where the property names are not quoted.  You can then compile that
+file into your source with `ADVANCED_OPTIMIZATIONS`.  See `example-closure.*`
+in the source for an example.
+
+## Testing
+
+Test are always run before pushing to master and merges are only accepted if
+they pass the tests as well.  To run the test you need `mocha` and `chai`.
+Simply run `mocha` or `npm test` to run the test suite.  Nothing needs to be
+generated.
+
+To run the tests in a browser run `./genhtmltests.js` and open `test.html`,
+`test.min.html` to test the test suite on the source and minified versions
+respectively.  The tests only need to be regenerated if a new file is created,
+they directly load the source and test scripts.
+
+`./genhtmltests.js` also creates `test.web.html` which runs tests on the master
+branch of the github repo.  It requires `mocha.js` and `mocha.css` in it's
+directory to work, all the other dependencies are pulled from the web.  You can
+find a hosted version of these tests at http://kevincox.github.com/url.js/test.html.
+**Note, this page does NOT test the local versions of the files!**  If you are
+developing you want one of the other three options.
 
 ## Examples
 
-Check out example.html for a number, but here are the basics.  The objects
-after the function calls are the return values.
+Here are a number of examples of usage.  They are probably all you need but
+there is complete documentation in the source.
 
 ```js
 // Parse Document URL
@@ -185,5 +231,5 @@ url.get(param,{array:true});
 ```
 
 If you want more examples, look at our tests in the `test/` directory.  Or you
-can view the live test of our master branch at
+can run/view the live test of our master branch at
 http://kevincox.github.com/url.js/test.html.
