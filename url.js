@@ -422,7 +422,7 @@ var build = self["build"] = function(data)
 		r += "#" + data["hash"];
 	}
 
-	return r || data["url"];
+	return r || data["url"] || "";
 };
 
 if ( typeof define != "undefined" && define["amd"] ) define(self);

@@ -46,4 +46,9 @@ describe('.build()', function()
 			path: "/home/kevincox/coolfile",
 		})).to.equal("ftp://kevincox:thepasswd@1.2.3.4:21/home/kevincox/coolfile");
 	});
+	it("should always return a string", function() {
+		expect(url.build({}))
+			.to.be.a("string")
+			.to.equal("");
+	});
 });
