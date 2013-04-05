@@ -1,8 +1,10 @@
 if ( typeof require == "function" )
 {
-	var expect = require("expect.js");
-	var url    = require("../url");
+	var chai = require("chai");
+	var url  = require("../url");
 }
+var expect = chai.expect;
+chai.Assertion.includeStack = true;
 
 describe('.get()', function()
 {
@@ -58,19 +60,19 @@ describe('.get()', function()
 	});
 
 	it("should grab the query string", function() {
-		expect(url.get("example.com/?a=5&b&c=5",{full:true})).to.eql({a:5,b:true,c:5});
+		expect(url.get("example.com/?a=5&b&c=5",{full:true})).to.eql({a:"5",b:true,c:"5"});
 	});
 
 	it("should parse into arrays", function() {
 		var opt = {array:true};
-		expect(url.get("a[0]=5&a[1]=6", opt)).to.eql({a:[5,6]});
-		expect(url.get("a[0]=5&a[hello]=6", opt)).to.eql({a:{0:5,"hello":6}});
-		expect(url.get("a[0][0]=1", opt)).to.eql({a:[[1]]});
+		expect(url.get("a[0]=5&a[1]=6", opt)).to.eql({a:["5","6"]});
+		expect(url.get("a[0]=5&a[hello]=6", opt)).to.eql({a:{0:"5","hello":"6"}});
+		expect(url.get("a[0][0]=1", opt)).to.eql({a:[["1"]]});
 		expect(url.get("a[0][0]=1&a[0][1]=3&a[1][0]=4", opt)).to.eql({a:[["1","3"],["4"]]});
 	});
 
 	it("should handle gaps in  arrays", function() {
-		expect(url.get("array[1]=test", {array:true}).array[1]).to.be("test");
+		expect(url.get("array[1]=test", {array:true}).array[1]).to.equal("test");
 	});
 
 	it("should give presedance to scalars", function() {

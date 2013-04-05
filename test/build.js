@@ -1,8 +1,10 @@
 if ( typeof require == "function" )
 {
-	var expect = require("expect.js");
-	var url    = require("../url");
+	var chai = require("chai");
+	var url  = require("../url");
 }
+var expect = chai.expect;
+chai.Assertion.includeStack = true;
 
 describe('.build()', function()
 {
@@ -16,6 +18,9 @@ describe('.build()', function()
 				request:[1,2,3,6,7],
 				auth:":D"
 			}
-		})).to.be("https://api.example.org?format=json&v=4&request[0]=1&request[1]=2&request[2]=3&request[3]=6&request[4]=7&auth=:D");
+		})).to.equal(
+			"https://api.example.org?format=json&v=4&request[0]=1&" +
+			"request[1]=2&request[2]=3&request[3]=6&request[4]=7&auth=:D"
+		);
 	});
 });

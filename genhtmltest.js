@@ -14,9 +14,9 @@ var mocha = path.dirname(require.resolve("mocha"));
 html    = html.replace(/\{\{\{mocha\}\}\}/g, path.relative(mydir, mocha)+"/");
 htmlweb = htmlweb.replace(/\{\{\{mocha\}\}\}/g, "");
 
-var mocha = require.resolve("expect.js");
-html    = html.replace(/\{\{\{expect\}\}\}/g, path.relative(mydir, mocha));
-htmlweb = htmlweb.replace(/\{\{\{expect\}\}\}/g, "expect.js");
+var chai = path.dirname(require.resolve("chai"));
+html    = html.replace(/\{\{\{chai\}\}\}/g, path.relative(mydir, chai)+"/");
+htmlweb = htmlweb.replace(/\{\{\{chai\}\}\}/g, "http://chaijs.com/");
 
 var tf = "";
 var tfweb = "";

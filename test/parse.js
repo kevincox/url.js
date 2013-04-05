@@ -1,8 +1,10 @@
 if ( typeof require == "function" )
 {
-	var expect = require("expect.js");
-	var url    = require("../url");
+	var chai = require("chai");
+	var url  = require("../url");
 }
+var expect = chai.expect;
+chai.Assertion.includeStack = true;
 
 describe('.parse()', function()
 {
@@ -96,6 +98,6 @@ describe('.parse()', function()
 	});
 
 	it("port should be a number", function() {
-		expect(url.parse("http://example.com:1234").port).to.be(1234);
+		expect(url.parse("http://example.com:1234").port).to.equal(1234);
 	});
 });
