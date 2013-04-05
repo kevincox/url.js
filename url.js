@@ -390,6 +390,10 @@ function build(data)
 	{
 		r += data["host"];
 	}
+	if ( typeof data["port"] != "undefined" )
+	{
+		r += ":" + data["port"];
+	}
 	if ( typeof data["path"] != "undefined" )
 	{
 		r += data["path"];
