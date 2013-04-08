@@ -1,6 +1,6 @@
 {
 	"name": "url.js",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "URL building and parsing.",
 	"main": "url.js",
 	"homepage": "https://github.com/kevincox/url.js",
@@ -31,6 +31,5 @@
 	],
 	"author": "Kevin Cox",
 	"license": "zlib",
-	"readmeFilename": "README.md",
-	"gitHead": "4be780e1b10313b31d2740282a8b69a7c84e36a6"
+	"readmeFilename": "README.md"
 }
