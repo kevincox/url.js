@@ -31,7 +31,7 @@
  */
 var self = {};
 
-var array = /\[([^\[]*)\]$/
+var array = /\[([^\[]*)\]$/;
 
 /** Parse a query string.
  *
@@ -80,7 +80,8 @@ var array = /\[([^\[]*)\]$/
  *
  * @return{!Object.<string, string|Array>} The parsed result.
  */
-var get = self["get"] = function(q, opt) {
+var get = self["get"] = function(q, opt)
+{
 	q = q || "";
 	if ( typeof opt          == "undefined" ) opt = {};
 	if ( typeof opt["full"]  == "undefined" ) opt["full"] = false;
