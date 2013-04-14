@@ -89,7 +89,7 @@ var get = self["get"] = function(q, opt)
 
 	if ( opt["full"] === true )
 	{
-		q = parse(q, {"get":false})["query"];
+		q = parse(q, {"get":false})["query"] || "";
 	}
 
 	var o = {};
@@ -97,6 +97,8 @@ var get = self["get"] = function(q, opt)
 	var c = q.split("&");
 	for ( var i in c )
 	{
+		if (!c[i].length) continue;
+
 		var d = c[i].indexOf("=");
 		var k = c[i], v = true;
 		if ( d >= 0 )

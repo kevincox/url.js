@@ -136,4 +136,9 @@ describe('.get()', function()
 			]
 		});
 	});
+
+	it("should always return an object", function() {
+		expect(url.get()).to.eql({});
+		expect(url.get("exmaple.com/foo", {full:true})).to.eql({});
+	});
 });
