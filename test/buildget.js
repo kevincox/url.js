@@ -10,9 +10,12 @@ describe('.buildget()', function()
 {
 	it("should get back to itself", function() {
 		var td = {user:["hi","joe"],"r&[":{te:"5", "t[vd]":["foo"]}};
-		expect(url.get(url.buildget(td),{array:true})).to.eql(td);
+		var r = url.get(url.buildget(td),{array:true});
+		expect(r.user).to.eql(td.user);
+		expect(r["r&["].te).to.equal(r["r&["].te);
+		expect(r["r&["]["t[vd]"]).to.eql(r["r&["]["t[vd]"]);
 	});
-
+	
 	it("should build ugly URLs with ease", function() {
 		expect(url.buildget({
 			"!![2][5]": "**",
