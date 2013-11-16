@@ -35,7 +35,7 @@ require(["url"], function(url){});
 ## Documentation
 There is very clear documentation comments in the source.  These can be built
 into HTML using [jsduck](https://github.com/senchalabs/jsduck) Feel free to
-[email me](kevincox.ca@gmail.com) if you have any questions.
+[email me](mailto:kevincox@kevincox.ca) if you have any questions.
 
 ## Building
 The script will work as is, but exports a few variables.  The build script
