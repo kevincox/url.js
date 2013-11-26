@@ -25,11 +25,11 @@ tests.forEach(function(t)
 	if ( t.slice(-3) != ".js" ) return;
 
 	tf    += '<script src="test/'+t+'"></script>\n';
-	tfweb += '<script src="https://raw.github.com/kevincox/url.js/master/test/'+t+'"></script>\n';
+	tfweb += '<script src="https://rawgithub.com/kevincox/url.js/master/test/'+t+'"></script>\n';
 });
 html    = html.replace(/\{\{\{tests\}\}\}/g, tf);
 htmlweb = htmlweb.replace(/\{\{\{tests\}\}\}/g, tfweb);
 
 fs.writeFileSync("test.html", html.replace(/\{\{\{url\}\}\}/g, "url.js"));
 fs.writeFileSync("test.min.html", html.replace(/\{\{\{url\}\}\}/g, "url.min.js"));
-fs.writeFileSync("test.web.html", htmlweb.replace(/\{\{\{url\}\}\}/g, "https://raw.github.com/kevincox/url.js/master/url.js"));
+fs.writeFileSync("test.web.html", htmlweb.replace(/\{\{\{url\}\}\}/g, "https://rawgithub.com/kevincox/url.js/master/url.js"));
