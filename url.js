@@ -22,6 +22,7 @@
 *                                                                              *
 *******************************************************************************/
 
+(function(){
 "use strict";
 
 ///// Rename a couple of functions because closure doesn't want to do it for us.
@@ -431,3 +432,5 @@ var build = self["build"] = function(data)
 if ( typeof define != "undefined" && define["amd"] ) define(self);
 else if ( typeof module != "undefined" ) module['exports'] = self;
 else window["url"] = self;
+
+}());

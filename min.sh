@@ -20,6 +20,6 @@ else
 	m="$(cat "$src")"
 fi
 
-m="(function(){$m})();"
+#m="(function(){$m})();"
 
 echo "$m" > "$dest"

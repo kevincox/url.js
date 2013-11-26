@@ -38,9 +38,6 @@ into HTML using [jsduck](https://github.com/senchalabs/jsduck) Feel free to
 [email me](mailto:kevincox@kevincox.ca) if you have any questions.
 
 ## Building
-The script will work as is, but exports a few variables.  The build script
-optimizes and wraps it in a closure.  Ensure that you wrap it in a closure if
-you are going to concatenate it with other scripts as it uses strict mode.
 
 You can use any compressor/optimizer with this script.  It works with closure
 `ADVANCED_OPTIMIZATIONS`.  You can run the `min.sh` script in the main directory
