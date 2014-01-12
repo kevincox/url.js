@@ -25,8 +25,6 @@
 +function(){
 "use strict";
 
-///// Rename a couple of functions because closure doesn't want to do it for us.
-
 /**
  * @private
  */
@@ -73,11 +71,11 @@ var array = /\[([^\[]*)\]$/;
  * @param{string} q The query string (the part after the '?').
  * @param{{full:boolean,array:boolean}=} opt Options.
  *
- *  - full:
- *    If set `q` will be treated as a full url and `q` will be built.
- *    by calling #parse to retrieve the query portion.
- *  - array:
- *    If set keys in the form of `key[i]` will be treated as arrays/maps.
+ * - full:
+ *   If set `q` will be treated as a full url and `q` will be built.
+ *   by calling #parse to retrieve the query portion.
+ * - array:
+ *   If set keys in the form of `key[i]` will be treated as arrays/maps.
  *
  * @return{!Object.<string, string|Array>} The parsed result.
  */
@@ -226,17 +224,16 @@ var buildget = self["buildget"] = function(data, prefix)
 	return itms.join("&");
 }
 
-var scheme = [
-	/^([a-z]*:)?(\/\/)?/,
-	/([a-z]*):/,
-];
-var user  = /^([^:@]*)(:[^@]*)?@/;
-var pass  = /^:([^@]*)@/;
-var host  = /^[0-9A-Za-z-._]+/;
-var port  = /^:([0-9]*)/;
-var path  = /^\/[^?#]*/;
-var query = /^\?([^#]*)/;
-var hash  = /^#(.*)$/;
+/// URL Regex.
+/**
+ * This regex splits the URL into parts.  The capture groups catch the important
+ * bits.
+ * 
+ * Each section is optional, so to work on any part find the correct top level
+ * `(...)?` and mess around with it.
+ */
+var regex = /^(?:([a-z]*):)?(?:\/\/)?(?:([^:@]*)(?::([^@]*))?@)?([a-z-._]+)?(?::([0-9]*))?(\/[^?#]*)?(?:\?([^#]*))?(?:#(.*))?$/i;
+//               1 - scheme                2 - user    3 = pass 4 - host        5 - port  6 - path        7 - query    8 - hash
 
 /** Parse a URL
  * This breaks up a URL into components.  It attempts to be very liberal and
@@ -251,103 +248,48 @@ var hash  = /^#(.*)$/;
  *
  * Returned properties.
  *
- *  - **scheme:** The url scheme. (ex: "mailto" or "https")
- *  - **user:** The username.
- *  - **pass:** The password.
- *  - **host:** The hostname. (ex: "localhost", "123.456.7.8" or "example.com")
- *  - **port:** The port, as a number. (ex: 1337)
- *  - **path:** The path. (ex: "/" or "/about.html")
- *  - **query:** "The query string. (ex: "foo=bar&v=17&format=json")
- *  - **get:** The query string parsed with get.  If `opt.get` is `false` this will
- *    be undefined
- *  - **hash:** The value after the hash. (ex: "myanchor")
- * 	be undefined even if `query` is set.
+ * - **scheme:** The url scheme. (ex: "mailto" or "https")
+ * - **user:** The username.
+ * - **pass:** The password.
+ * - **host:** The hostname. (ex: "localhost", "123.456.7.8" or "example.com")
+ * - **port:** The port, as a number. (ex: 1337)
+ * - **path:** The path. (ex: "/" or "/about.html")
+ * - **query:** "The query string. (ex: "foo=bar&v=17&format=json")
+ * - **get:** The query string parsed with get.  If `opt.get` is `false` this
+ *   will be absent
+ * - **hash:** The value after the hash. (ex: "myanchor")
+ *   be undefined even if `query` is set.
  *
  * @param{string} url The URL to parse.
  * @param{{get:Object}=} opt Options:
  *
- *  - get: An options argument to be passed to #get or false to not call #get.
+ * - get: An options argument to be passed to #get or false to not call #get.
  *    **DO NOT** set `full`.
  *
  * @return{!Object} An object with the parsed values.
  */
 var parse = self["parse"] = function(url, opt)
 {
-	var r = {}
+	
 	if ( typeof opt == "undefined" ) opt = {};
 	
-	r["url"] = url;
+	var md = url.match(regex) || [];
 	
-	do {
-		var s0 = url.toLowerCase().match(scheme[0])
-		if ( s0 === null ) break;
-		if ( typeof s0[1] !== "undefined" )
-		{
-			var s1 = s0[1].match(scheme[1])
-			r["scheme"] = s1[1];
-		}
-		url = url.slice(s0[0].length);
-	} while (false);
+	var r = {
+		"url":    url,
+		
+		"scheme": md[1],
+		"user":   md[2],
+		"pass":   md[3],
+		"host":   md[4],
+		"port":   md[5] && +md[5],
+		"path":   md[6],
+		"query":  md[7],
+		"hash":   md[8],
+	};
 	
-	do {
-		var u = url.match(user)
-		if ( u === null ) break;
-		r["user"] = decodeURIComponent(u[1]);
-		
-		url = url.slice(u[1].length);
-		
-		do {
-			var p = url.match(pass)
-			if ( p === null ) break;
-			r["pass"] = decodeURIComponent(p[1]);
-			
-			url = url.slice(p[1].length+1); // +1 is for the ':'
-		} while (false);
-		
-		url = url.slice(1); // Drop the '@'.
-	} while (false);
-	
-	do {
-		var h = url.match(host)
-		if ( h === null ) break;
-		r["host"] = h[0];
-		
-		url = url.slice(h[0].length);
-	} while (false);
-	
-	do {
-		var p = url.match(port)
-		if ( p === null || p[1]==="" ) break;
-		r["port"] = parseInt(p[1]);
-		
-		url = url.slice(p[0].length);
-	} while (false);
-	
-	do {
-		var p = url.match(path)
-		if ( p === null ) break;
-		r["path"] = decodeURIComponent(p[0]);
-		
-		url = url.slice(p[0].length);
-	} while (false);
-	
-	do {
-		var q = url.match(query)
-		if ( q === null ) break;
-		r["query"] = q[1];
-		if ( opt["get"] !== false )
-			r["get"] = get(r["query"], opt["get"]);
-		
-		url = url.slice(q[0].length);
-	} while (false);
-	
-	do {
-		var h = url.match(hash)
-		if ( h === null ) break;
-		r["hash"] = decodeURIComponent(h[1]);
-		
-		//url = url.slice(h[0].length);
-	} while (false);
+	if ( opt.get !== false )
+		r["get"] = r["query"] && get(r["query"], opt.get);
 	
 	return r;
 }
@@ -395,36 +337,15 @@ var build = self["build"] = function(data)
 			r += "@";
 		}
 	}
-	if ( typeof data["pass"] != "undefined" )
-	{
-		r += ":" + data["pass"] + "@";
-	}
-	if ( typeof data["host"] != "undefined" )
-	{
-		r += data["host"];
-	}
-	if ( typeof data["port"] != "undefined" )
-	{
-		r += ":" + data["port"];
-	}
-	if ( typeof data["path"] != "undefined" )
-	{
-		r += data["path"];
-	}
+	if ( typeof data["pass"] != "undefined" ) r += ":" + data["pass"] + "@";
+	if ( typeof data["host"] != "undefined" ) r += data["host"];
+	if ( typeof data["port"] != "undefined" ) r += ":" + data["port"];
+	if ( typeof data["path"] != "undefined" ) r += data["path"];
 	
-	if ( typeof data["get"] != "undefined" )
-	{
-		r += "?" + buildget(data["get"]);
-	}
-	else if ( typeof data["query"] != "undefined" )
-	{
-		r += "?" + data["query"];
-	}
+	if      ( typeof data["get"]   != "undefined" ) r += "?" + buildget(data["get"]);
+	else if ( typeof data["query"] != "undefined" ) r += "?" + data["query"];
 	
-	if ( typeof data["hash"] != "undefined" )
-	{
-		r += "#" + data["hash"];
-	}
+	if ( typeof data["hash"] != "undefined" ) r += "#" + data["hash"];
 	
 	return r || data["url"] || "";
 };
