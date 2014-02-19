@@ -342,8 +342,10 @@ var build = self["build"] = function(data)
 	if ( typeof data["port"] != "undefined" ) r += ":" + data["port"];
 	if ( typeof data["path"] != "undefined" ) r += data["path"];
 	
-	if      ( typeof data["get"]   != "undefined" ) r += "?" + buildget(data["get"]);
-	else if ( typeof data["query"] != "undefined" ) r += "?" + data["query"];
+	var getData = buildget(data["get"]);
+	var queryData = data["query"];
+	if      ( typeof data["get"]   != "undefined" && getData != "" ) r += "?" + getData;
+	else if ( typeof data["query"] != "undefined" && queryData != "" ) r += "?" + queryData;
 	
 	if ( typeof data["hash"] != "undefined" ) r += "#" + data["hash"];
 	
