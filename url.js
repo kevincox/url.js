@@ -94,7 +94,7 @@ var get = self["get"] = function(q, opt)
 	var o = {};
 	
 	var c = q.split("&");
-	for ( var i in c )
+	for (var i = 0; i < c.length; i++)
 	{
 		if (!c[i].length) continue;
 		
