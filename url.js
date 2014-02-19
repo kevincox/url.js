@@ -96,7 +96,7 @@ var get = self["get"] = function(q, opt)
 	var c = q.split("&");
 	for ( var i in c )
 	{
-		if (!c[i].length) continue;
+		if (!c[i].length || typeof c[i] !== 'string') continue;
 		
 		var d = c[i].indexOf("=");
 		var k = c[i], v = true;
