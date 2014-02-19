@@ -312,16 +312,24 @@ var noslash = ["mailto","bitcoin"];
  *  - pass: Used if defined.
  *  - host: Used if defined.
  *  - path: Used if defined.
- *  - query: Used only if `get` is not provided.
- *  - get: Used if defined.  Passed to #buildget and the result is used as the
+ *  - query: Used only if `get` is not provided and non-empty.
+ *  - get: Used if non-empty.  Passed to #buildget and the result is used as the
  *    query string.
  *  - hash: Used if defined.
+ * 
+ * These are the options that are valid on the options object.
+ * 
+ *  - useemptyget: If truthy, a question mark will be appended for empty get
+ *    strings.  This notably makes `build()` and `parse()` fully symmetric.
  *
  * @param{Object} data The pieces of the URL.
+ * @param{Object} opt Options for building the url.
  * @return{string} The URL.
  */
-var build = self["build"] = function(data)
+var build = self["build"] = function(data, opt)
 {
+	opt = opt || {};
+	
 	var r = "";
 	
 	if ( typeof data["scheme"] != "undefined" )
@@ -342,8 +350,17 @@ var build = self["build"] = function(data)
 	if ( typeof data["port"] != "undefined" ) r += ":" + data["port"];
 	if ( typeof data["path"] != "undefined" ) r += data["path"];
 	
-	if      ( typeof data["get"]   != "undefined" ) r += "?" + buildget(data["get"]);
-	else if ( typeof data["query"] != "undefined" ) r += "?" + data["query"];
+	if (opt["useemptyget"])
+	{
+		if      ( typeof data["get"]   != "undefined" ) r += "?" + buildget(data["get"]);
+		else if ( typeof data["query"] != "undefined" ) r += "?" + data["query"];
+	}
+	else
+	{
+		// If .get use it.  If .get leads to empty, use .query.
+		var q = data["get"] && buildget(data["get"]) || data["query"];
+		if (q) r += "?" + q;
+	}
 	
 	if ( typeof data["hash"] != "undefined" ) r += "#" + data["hash"];
 	

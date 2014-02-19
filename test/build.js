@@ -51,4 +51,36 @@ describe('.build()', function()
 			.to.be.a("string")
 			.to.equal("");
 	});
+	it("shouldn't use unessary question mark.", function() {
+		expect(url.build({
+			host: "example.com",
+			path: "/script.php",
+			query: "",
+		}))
+			.to.be.a("string")
+			.to.equal("example.com/script.php");
+		expect(url.build({
+			host: "example.com",
+			path: "/script.php",
+			get: {},
+		}))
+			.to.be.a("string")
+			.to.equal("example.com/script.php");
+	});
+	it("should end in question mark if told.", function() {
+		expect(url.build({
+			host: "example.com",
+			path: "/script.php",
+			query: "",
+		}, {useemptyget:true}))
+			.to.be.a("string")
+			.to.equal("example.com/script.php?");
+		expect(url.build({
+			host: "example.com",
+			path: "/script.php",
+			get: {},
+		}, {useemptyget:true}))
+			.to.be.a("string")
+			.to.equal("example.com/script.php?");
+	});
 });
