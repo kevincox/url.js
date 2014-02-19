@@ -82,5 +82,11 @@ describe('.build()', function()
 		}, {useemptyget:true}))
 			.to.be.a("string")
 			.to.equal("example.com/script.php?");
+		expect(url.build({
+			host: "example.com",
+			path: "/script.php",
+		}, {useemptyget:true}))
+			.to.be.a("string")
+			.to.equal("example.com/script.php");
 	});
 });
