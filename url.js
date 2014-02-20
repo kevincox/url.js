@@ -285,7 +285,7 @@ var parse = self["parse"] = function(url, opt)
 		"port":   md[5] && +md[5],
 		"path":   md[6],
 		"query":  md[7],
-		"hash":   md[8],
+		"hash":   md[8]
 	};
 	
 	if ( opt.get !== false )
