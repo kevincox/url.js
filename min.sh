@@ -8,7 +8,7 @@ if [ "$min" == 'noexport' ] ; then
 	m="$(perl -pe 's/\["([A-Za-z_]+)"\]/.$1/g; s/"([A-Za-z_]+)":/$1:/g' "$src")"
 elif [ "$min" != 'true' ] ; then
 	m="$(cat "$src")"
-elif false which closure &>/dev/null ; then
+elif which closure &>/dev/null ; then
 	m="$(closure --language_in ECMASCRIPT5_STRICT --js "$src" \
 	             $debug \
 	             --compilation_level ADVANCED_OPTIMIZATIONS \
