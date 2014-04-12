@@ -44,7 +44,7 @@ describe('.build()', function()
 			}
 		})).to.equal(
 			"https://api.example.org?format=json&v=4&request[0]=1&" +
-			"request[1]=2&request[2]=3&request[3]=6&request[4]=7&auth=:D"
+			"request[1]=2&request[2]=3&request[3]=6&request[4]=7&auth=%3AD"
 		);
 	});
 	it("should build emails", function() {

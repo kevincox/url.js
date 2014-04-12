@@ -66,10 +66,10 @@ describe('.buildget()', function()
 			"data[1][data][subject]=Who%20are%20you%3F&data[2]=update&" +
 			"data[3][client]=39284&data[3][type]=request&" +
 			"data[3][data][critical]&" +
-			"data[3][data][hash]=24-0/4/42342:%7B%3F$@%7B@%3F$"
+			"data[3][data][hash]=24-0%2F4%2F42342%3A%7B%3F%24%40%7B%40%3F%24"
 		);
 	});
-
+	
 	it("should handle ugly values", function() {
 		expect(url.buildget({
 			"?&==& ![][][][]": [
@@ -81,9 +81,9 @@ describe('.buildget()', function()
 			},
 			"{}[]2|=#@: ": "2r2[}EF~@",
 		})).to.eql(
-			"%3F%26%3D%3D%26%20!%5B%5D%5B%5D%5B%5D%5B%5D[0]=%25$%25%5E%26*%7B" +
-			"%5B&%3F%26%3D%3D%26%20!%5B%5D%5B%5D%5B%5D%5B%5D[1]=%20!/:&%5B22" +
-			"[%5B24%5B%7D%7C]&%7B%7D%5B%5D2%7C%3D#@:%20=2r2%5B%7DEF~@"
+			"%3F%26%3D%3D%26%20!%5B%5D%5B%5D%5B%5D%5B%5D[0]=%25%24%25%5E%26*%7B" +
+			"%5B&%3F%26%3D%3D%26%20!%5B%5D%5B%5D%5B%5D%5B%5D[1]=%20!%2F%3A&%5B2" +
+			"2[%5B24%5B%7D%7C]&%7B%7D%5B%5D2%7C%3D%23%40%3A%20=2r2%5B%7DEF~%40"
 		);
 	});
 });

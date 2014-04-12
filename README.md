@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/kevincox/url.js.png?branch=master)](https://travis-ci.org/kevincox/url.js)
 
-A high level URL parser in javascript.
+A high level URL parser in javascript.  Lightning fast and less than 1K minified
+and gzipped.
 
 ## Loading
 
@@ -31,6 +32,14 @@ require(["url"], function(url){});
 ```html
 <script src="url.js"></script>
 ```
+
+## Hosted
+
+You can use a hosted version of URL.js.  These files are all on fast CDNs and
+it is recommended that you use them unless you are going to combine it into your
+scripts.
+
+- [URL.js 1.0](http://yourjavascript.com/9241412125/url1-min.js) minified with source map.
 
 ## Documentation
 There is very clear documentation comments in the source.  These can be built
@@ -72,7 +81,11 @@ Here are a number of examples of usage.  They are probably all you need but
 there is complete documentation in the source.
 
 ```js
+// This the is output of node's `console.log()` notice that the maps in `data` are
+// technically arrays.  Also notice that even though "!![2][5]" is in an array
+// format it was encoded and decoded properly so it was kept as a string key.
 // Parse Document URL
+
 url.parse(document.location.href);
 {
     "url": "file:///home/kevin/url.js/example.html",
@@ -223,9 +236,6 @@ url.get(param,{array:true});
 		],
 	]
 }
-// This the is output of node's `console.log()` notice that the maps in `data` are
-// technically arrays.  Also notice that even though "!![2][5]" is in an array
-// format it was encoded and decoded properly so it was kept as a string key.
 ```
 
 If you want more examples, look at our tests in the `test/` directory.  Or you

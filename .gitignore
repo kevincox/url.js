@@ -6,3 +6,4 @@ node_modules/
 /test.web.html
 example-closure.one.js
 require.js
+*.map
