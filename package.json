@@ -31,5 +31,20 @@
 	],
 	"author": "Kevin Cox",
 	"license": "zlib",
-	"readmeFilename": "README.md"
+	"readmeFilename": "README.md",
+	
+	"testling": {
+		"harness": "mocha-bdd",
+		"files": "test/*.js",
+		"browsers": [
+			"ie/8..latest",
+			"chrome/latest..canary",
+			"firefox/latest..nightly",
+			"opera/latest..next",
+			"safari/latest",
+			"iphone/latest",
+			"ipad/latest",
+			"android-browser/latest"
+		]
+	}
 }

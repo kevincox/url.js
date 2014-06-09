@@ -37,9 +37,9 @@ require(["url"], function(url){});
 
 You can use a hosted version of URL.js.  These files are all on fast CDNs and
 it is recommended that you use them unless you are going to combine it into your
-scripts.
+scripts.  The https version is recommended but http is available as well.
 
-- [URL.js 1.0](http://yourjavascript.com/9241412125/url1-min.js) minified with source map.
+- [URL.js 1.0.2](https://kevincox-cdn.appspot.com/url-1.0.2.min.js)
 
 ## Documentation
 There is very clear documentation comments in the source.  These can be built
