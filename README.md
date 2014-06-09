@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/kevincox/url.js.png?branch=master)](https://travis-ci.org/kevincox/url.js)
 
+[![Browser Support](https://ci.testling.com/kevincox/url.js.png)](https://ci.testling.com/kevincox/url.js)
+
 A high level URL parser in javascript.  Lightning fast and less than 1K minified
 and gzipped.
 
