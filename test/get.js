@@ -28,7 +28,7 @@ if ( typeof require == "function" )
 	var url  = require("../url");
 }
 var expect = chai.expect;
-chai.Assertion.includeStack = true;
+chai.config.includeStack = true;
 
 describe('.get()', function()
 {
