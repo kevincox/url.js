@@ -189,7 +189,7 @@ var self = {
 			switch (typeof v)
 			{
 				case 'boolean':
-					itms.push(ek);
+					if(v) itms.push(ek);
 					break;
 				case 'number':
 					v = v.toString();

@@ -32,6 +32,10 @@ chai.config.includeStack = true;
 
 describe('.buildget()', function()
 {
+	it("should encode booleans as flags", function() {
+		expect(url.buildget({t: true, f: false})).to.eql("t");
+	});
+	
 	it("should get back to itself", function() {
 		var td = {user:["hi","joe"],"r&[":{te:"5", "t[vd]":["foo"]}};
 		var r = url.get(url.buildget(td),{array:true});
