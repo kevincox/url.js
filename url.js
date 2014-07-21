@@ -35,8 +35,8 @@ var array = /\[([^\[]*)\]$/;
  * Each section is optional, so to work on any part find the correct top level
  * `(...)?` and mess around with it.
  */
-var regex = /^(?:([a-z]*):)?(?:\/\/)?(?:([^:@]*)(?::([^@]*))?@)?([a-z-._]+)?(?::([0-9]*))?(\/[^?#]*)?(?:\?([^#]*))?(?:#(.*))?$/i;
-//               1 - scheme                2 - user    3 = pass 4 - host        5 - port  6 - path        7 - query    8 - hash
+var regex = /^(?:([a-z]*):)?(?:\/\/)?(?:([^:@]*)(?::([^@]*))?@)?([0-9a-z-._]+)?(?::([0-9]*))?(\/[^?#]*)?(?:\?([^#]*))?(?:#(.*))?$/i;
+//               1 - scheme              2 - user    3 = pass    4 - host           5 - port  6 - path        7 - query    8 - hash
 
 var noslash = ["mailto","bitcoin"];
 

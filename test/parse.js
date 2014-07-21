@@ -162,4 +162,20 @@ describe('.parse()', function()
 		expect(url.parse("http://example.com:1234"))
 			.to.have.property("port", 1234);
 	});
+	
+	it("should parse ip addresses", function() {
+		expect(url.parse("http://192.168.1.1:6789"))
+			.to.eql({
+				url:    "http://192.168.1.1:6789",
+				scheme: "http",
+				user:   undefined,
+				pass:   undefined,
+				host:   "192.168.1.1",
+				port:   6789,
+				path:   undefined,
+				query:  undefined,
+				get:    undefined,
+				hash:   undefined,
+			});
+	});
 });
