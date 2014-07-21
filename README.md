@@ -43,6 +43,7 @@ scripts.  The https version is recommended but http is available as well.
 
 - [URL.js 1.0.2](https://kevincox-cdn.appspot.com/url-1.0.2.min.js)
 - [URL.js 1.0.3](https://kevincox-cdn.appspot.com/url-1.0.3.min.js)
+- [URL.js 1.0.4](https://kevincox-cdn.appspot.com/url-1.0.4.min.js)
 
 ## Documentation
 There is very clear documentation comments in the source.  These can be built
