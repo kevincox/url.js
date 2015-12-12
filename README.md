@@ -41,9 +41,9 @@ You can use a hosted version of URL.js.  These files are all on fast CDNs and
 it is recommended that you use them unless you are going to combine it into your
 scripts.  The https version is recommended but http is available as well.
 
-- [URL.js 1.0.2](https://kevincox-cdn.appspot.com/url-1.0.2.min.js)
-- [URL.js 1.0.3](https://kevincox-cdn.appspot.com/url-1.0.3.min.js)
 - [URL.js 1.0.4](https://kevincox-cdn.appspot.com/url-1.0.4.min.js)
+- [URL.js 1.0.3](https://kevincox-cdn.appspot.com/url-1.0.3.min.js)
+- [URL.js 1.0.2](https://kevincox-cdn.appspot.com/url-1.0.2.min.js)
 
 ## Documentation
 There is very clear documentation comments in the source.  These can be built
